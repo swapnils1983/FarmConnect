@@ -1,0 +1,8 @@
+# backend/.gitignore
+
+# Ignore node_modules in backend
+node_modules/
+
+# Ignore environment variables and log files
+.env
+logs/
