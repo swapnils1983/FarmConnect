@@ -18,7 +18,7 @@ const SellerDashboard = () => {
       <div className="flex-grow p-4 overflow-y-auto">
         {selectedPage === 'orders' && <Orders />}
         {selectedPage === 'addProduct' && <AddProduct />}
-        {selectedPage === 'analytics' && <SellerAnalytics sellerId={sellerId} />}
+        {/* {selectedPage === 'analytics' && <SellerAnalytics sellerId={sellerId} />} */}
         {selectedPage === 'products' && <SellerProducts sellerId={sellerId} />}
       </div>
     </div>

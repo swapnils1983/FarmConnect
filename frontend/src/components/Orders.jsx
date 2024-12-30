@@ -39,6 +39,17 @@ function Orders() {
     }
   };
 
+  const handleDeleteOrder = async (orderId) => {
+    try {
+      // Make a DELETE request to the delete order endpoint
+      await axios.delete(`http://localhost:3000/api/products/delete/${orderId}`);
+      // Update the orders state by removing the deleted order
+      setOrders((prevOrders) => prevOrders.filter((order) => order._id !== orderId));
+    } catch (error) {
+      console.error('Error deleting order:', error);
+      setError('Error deleting order');
+    }
+  };
   // Display error message if any error occurs
   if (error) {
     return <div className="p-6 bg-red-100 text-red-800">{error}</div>;

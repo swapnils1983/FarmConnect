@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import {toast} from 'react-toastify';
 
 const AddProduct = () => {
   const user = useSelector((state) => state.auth.user);
@@ -13,6 +14,7 @@ const AddProduct = () => {
     quantity: '',
   });
   const [file, setFile] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -28,6 +30,7 @@ const AddProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const formData = new FormData();
     formData.append('image', file);
     formData.append('brand', user.brandName);
@@ -56,9 +59,11 @@ const AddProduct = () => {
     } catch (error) {
       console.error(error);
       alert('Failed to add product');
+    } finally {
+      setIsSubmitting(false);
     }
   };
-
+  console.log(user)
   return (
     <div className="flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 min-h-screen">
       <form
@@ -66,7 +71,7 @@ const AddProduct = () => {
         onSubmit={handleSubmit}
         className="w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 space-y-8 transform transition duration-300 hover:scale-105"
       >
-        <h2 className="text-3xl font-semibold text-center text-blue-800">Add New Product</h2>
+        <h2 className="text-3xl font-semibold text-center text-gray-800">Add New Product</h2>
 
         <div>
           <label className="block text-gray-700 font-medium mb-2" htmlFor="image">
@@ -103,7 +108,8 @@ const AddProduct = () => {
 
         <button
           type="submit"
-          className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg"
+          disabled={isSubmitting}
+          className={`w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg`}
         >
           Add Product
         </button>

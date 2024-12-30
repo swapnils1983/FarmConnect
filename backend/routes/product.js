@@ -4,7 +4,7 @@ const router = express.Router();
 const upload = require('../middlewares/cloudanaryConfig');
 const authUser = require('../middlewares/authUser');
 
-router.post('/create',authUser ,upload.single('image'),createProduct);
+router.post('/create',authUser,upload.single('image'),createProduct);
 
 router.get('/get/:id',getProductById);
 router.get('/getall/seller',authUser,getAllProductsBySeller);

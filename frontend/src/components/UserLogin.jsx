@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from './Input';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -12,6 +12,11 @@ function UserLogin() {
   const isAuthenticated = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
 
+  useEffect(()=>{
+    if(isAuthenticated){
+      navigate('/');
+    }
+  },[isAuthenticated])
   const handleLogin = async (data) => {
     setError("");
     try {
@@ -29,9 +34,7 @@ function UserLogin() {
       console.log(json.message);
       if (res.status === 200) {
         dispatch(login(json.user));
-        if (isAuthenticated) {
-          navigate('/');
-        }
+        
       } else {
         setError(json.message);
       }

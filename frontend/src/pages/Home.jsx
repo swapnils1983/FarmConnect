@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Leaf, Truck, Users, ShoppingBasket, ChevronRight, Mail } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
@@ -48,6 +50,9 @@ const Index = () => {
           <button 
             className="bg-white text-green-800 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors duration-300 animate-fadeIn flex items-center justify-center mx-auto"
             style={{ animationDelay: "0.4s" }}
+            onClick={()=>{
+              navigate('/category/getall')
+            }}
           >
             Shop Now
             <ChevronRight className="ml-2 h-4 w-4" />

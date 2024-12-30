@@ -8,7 +8,7 @@ const Sidebar = ({ onSelect }) => {
   const menuItems = [
     { label: 'Orders', icon: <FiShoppingCart />, onClick: () => onSelect('orders') },
     { label: 'Add Product', icon: <FiPlusSquare />, onClick: () => onSelect('addProduct') },
-    { label: 'Analytics', icon: <FiBarChart />, onClick: () => onSelect('analytics') },
+    // { label: 'Analytics', icon: <FiBarChart />, onClick: () => onSelect('analytics') },
     { label: 'Products', icon: <FiLogOut />, onClick: () => onSelect('products') },
   ];
 

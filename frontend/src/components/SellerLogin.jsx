@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from './Input';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../redux/authSlice';
 
 function SellerLogin() {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.status);
+
+  useEffect(()=>{
+    if(isAuthenticated){
+      navigate('/');
+    }
+  },[isAuthenticated])
 
   const handleLogin = async (data) => {
     setError("");
@@ -40,7 +48,7 @@ function SellerLogin() {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-200 via-yellow-100 to-green-400 p-6">
       <div className="bg-white p-10 rounded-xl shadow-lg w-full max-w-md border-2 border-green-400">
-        <h2 className="text-2xl font-semibold mb-6 text-center text-green-800">Log In As Seller</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center text-green-800">Log In As Farmer</h2>
         <form onSubmit={handleSubmit(handleLogin)} className="space-y-5">
           <Input
             label="Email"

@@ -28,7 +28,7 @@ const SellerProducts = ({ sellerId }) => {
 
   const handleDelete = async (productId) => {
     try {
-      await axios.delete(`http://localhost:3000/api/products/${productId}`);
+      await axios.delete(`http://localhost:3000/api/products/delete/${productId}`);
       setProducts(products.filter(product => product._id !== productId));
       console.log("Deleted product with ID:", productId);
     } catch (error) {
@@ -64,12 +64,12 @@ const SellerProducts = ({ sellerId }) => {
                 <td className="px-4 py-2">${product.pricePerUnit}</td>
                 <td className="px-4 py-2">{product.quantity}</td>
                 <td className="px-4 py-2">
-                  <button
+                  {/* <button
                     onClick={() => handleEdit(product._id)}
                     className="px-3 py-1 text-white bg-blue-500 hover:bg-blue-700 rounded mr-2"
                   >
                     Edit
-                  </button>
+                  </button> */}
                   <button
                     onClick={() => handleDelete(product._id)}
                     className="px-3 py-1 text-white bg-red-500 hover:bg-red-700 rounded"

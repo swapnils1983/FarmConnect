@@ -46,11 +46,11 @@ const Navbar = () => {
               </Button>
               {isProductsMenuOpen && (
                 <div className="absolute top-full left-0 mt-0 w-48 bg-white border rounded-md shadow-lg z-20">
-                  <Link to="category/getall" className="block px-4 py-2 hover:bg-gray-100 font-semibold">All Products</Link>
+                  <Link to="/category/getall" className="block px-4 py-2 hover:bg-gray-100 font-semibold">All Products</Link>
                   <Link to="/category/Rice" className="block px-4 py-2 hover:bg-gray-100">Rice</Link>
                   <Link to="/category/Wheat" className="block px-4 py-2 hover:bg-gray-100">Wheat</Link>
                   <Link to="/category/Nuts" className="block px-4 py-2 hover:bg-gray-100">Nuts</Link>
-                  <Link to="/category/sugar" className="block px-4 py-2 hover:bg-gray-100">Sugar</Link>
+                  <Link to="/category/Sugar" className="block px-4 py-2 hover:bg-gray-100">Sugar</Link>
                   <Link to="/category/spices" className="block px-4 py-2 hover:bg-gray-100">Spices</Link>
                   <Link to="/category/Fruits" className="block px-4 py-2 hover:bg-gray-100">Fruits</Link>
                   <Link to="/category/Vegetables" className="block px-4 py-2 hover:bg-gray-100">Vegetables</Link>

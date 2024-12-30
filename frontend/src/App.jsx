@@ -12,9 +12,11 @@ import Cart from './components/Cart';
 import ProtectedRoute from './utils/ProtectedRoute';
 import Index from './pages/Home';
 import SellerDashboard from './pages/SellerDashboard';
+import OrderStatus from './components/OrderStatus';
 
 
 function App() {
+
   return (
     <div>
       <Navbar />
@@ -31,6 +33,8 @@ function App() {
         element={
           <ProtectedRoute>
             <Cart />
+            <OrderStatus />
+
           </ProtectedRoute>
         }
       />

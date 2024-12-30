@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from './Input';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/authSlice';
@@ -9,6 +9,7 @@ function UserRegister() {
   const [error, setError] = useState("");
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const signup = async (data) => {
     setError("");
@@ -29,10 +30,11 @@ function UserRegister() {
       const json = await res.json();
 
       if (res.status === 201) {
-        dispatch(login(json.user));
+        navigate("/user/login");
         alert("User registered successfully!");
       } else {
-        alert(json.message);
+        console.log(json)
+        alert(json.error);
       }
     } catch (error) {
       setError("An error occurred during registration. Please try again.");

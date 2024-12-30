@@ -5,11 +5,15 @@ import { addItem } from "../redux/cartSlice";
 
 const ProductDetails = () => {
   const { id } = useParams();
+  const role = useSelector(state => state.auth.user.role);
   const [product, setProduct] = useState(null);
   const dispatch = useDispatch();
 const {items} = useSelector(state => state.cart);
 
   const handleAddToCart = () => {
+    if(role === "seller"){
+      return alert("Please login as a buyer to buy products")
+    }
     if (product) {
       dispatch(
         addItem({
@@ -25,7 +29,6 @@ const {items} = useSelector(state => state.cart);
   };
 
 
-// console.log(items)
 
 
 
