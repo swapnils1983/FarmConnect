@@ -41,7 +41,6 @@ const {items} = useSelector(state => state.cart);
         }
         const data = await response.json();
         setProduct(data);
-        console.log(`Data: ${data}`);
 
       } catch (error) {
         console.error("Error fetching product:", error);
